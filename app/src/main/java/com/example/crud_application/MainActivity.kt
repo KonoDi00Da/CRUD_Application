@@ -66,12 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     fun openWebLink(context: Context, url: String) {
         var webLink: String?=null
-        if(!url.endsWith(".com")){
-            if (!url.startsWith("http://") && !url.startsWith("https://")) {
-                webLink = "http://$url"+".com"
-            }
-        }
-       else {
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
             webLink = "http://$url"
         }
         val webPage: Uri = Uri.parse(webLink)
