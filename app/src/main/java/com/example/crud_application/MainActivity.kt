@@ -70,9 +70,9 @@ class MainActivity : AppCompatActivity() {
             webLink = "http://$url"
         }
         val webPage: Uri = Uri.parse(webLink)
-        val intent = Intent(Intent.ACTION_VIEW, webPage)
+        val intent = Intent(this, WebViewActivity::class.java)
+        intent.putExtra("webLink", webLink)
         context.startActivity(intent)
-
     }
 
     private fun showDeleteConfirmationDialog(selectedId: String) {
