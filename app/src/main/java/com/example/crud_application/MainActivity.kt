@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         val webPage: Uri = Uri.parse(webLink)
         val intent = Intent(this, WebViewActivity::class.java)
         intent.putExtra("webLink", webLink)
+        txtWebLink.text.clear()
         context.startActivity(intent)
     }
 
@@ -82,6 +83,8 @@ class MainActivity : AppCompatActivity() {
                 // User confirmed deletion
                 databaseReference?.child(selectedId.orEmpty())?.removeValue()
                 toast("Item has been removed")
+                txtWebLink.text.clear()
+
             }
             .setNegativeButton("No", null)
             .create()
@@ -91,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun saveToFirebase() {
         val webLink = WebLink(webLink = txtWebLink.text.toString())
-        databaseReference?.child(getRandomString(5))?.setValue(webLink)
+        databaseReference?.child(getRandomString(10))?.setValue(webLink)
             ?.addOnSuccessListener {
                 toast("Successfully added data to Firebase")
                 txtWebLink.text.clear()
